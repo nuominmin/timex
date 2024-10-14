@@ -46,3 +46,11 @@ func TodayRange() (start time.Time, end time.Time) {
 func Unix(sec int64, nsec int64) time.Time {
 	return time.Unix(sec, nsec).In(Loc())
 }
+
+// FormatUnix
+// layout DateTime: time.DateTime
+// layout DateOnly: time.DateOnly
+// layout TimeOnly: time.TimeOnly
+func FormatUnix(sec int64, nsec int64, layout string) string {
+	return Unix(sec, nsec).Format(layout)
+}
