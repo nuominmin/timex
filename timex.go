@@ -42,3 +42,7 @@ func TodayRange() (start time.Time, end time.Time) {
 	start = time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, loc)
 	return start, start.Add(24*time.Hour - time.Second)
 }
+
+func Unix(sec int64, nsec int64) time.Time {
+	return time.Unix(sec, nsec).In(Loc())
+}
