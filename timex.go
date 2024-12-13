@@ -5,8 +5,13 @@ import (
 )
 
 func Loc() *time.Location {
-	loc, _ := time.LoadLocation("Asia/Shanghai")
-	return loc
+    loc, err := time.LoadLocation("Asia/Shanghai")
+    if err != nil {
+        if loc, err = time.LoadLocation("Local"); err != nil {
+            loc = time.UTC
+        }
+    }
+    return loc
 }
 
 func Now() time.Time {
